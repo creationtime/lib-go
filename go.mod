@@ -27,6 +27,7 @@ require (
 	github.com/uber/jaeger-client-go v2.25.0+incompatible
 	github.com/uber/jaeger-lib v2.4.0+incompatible // indirect
 	github.com/valyala/fasthttp v1.22.0
+	github.com/xfrr/goffmpeg v0.0.0-20200825100927-5550d238df5c
 	golang.org/x/crypto v0.0.0-20210317152858-513c2a44f670
 	google.golang.org/protobuf v1.26.0
 	gotest.tools v2.2.0+incompatible
