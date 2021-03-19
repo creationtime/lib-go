@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"testing"
 
+	pb "github.com/creationtime/lib-go/crypto/cryptoId/pb"
 	"github.com/stretchr/testify/assert"
-	pb "lib/crypto/cryptoId/pb"
 )
 
 func TestMarshalJSON(t *testing.T) {

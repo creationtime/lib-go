@@ -1,4 +1,4 @@
-module lib
+module github.com/creationtime/lib-go
 
 go 1.14
 
@@ -12,7 +12,7 @@ require (
 	github.com/golang/protobuf v1.5.1
 	github.com/gomarkdown/markdown v0.0.0-20210208175418-bda154fe17d8
 	github.com/json-iterator/go v1.1.10
-	github.com/lib/pq v1.10.0
+	github.com/lib/pq v1.3.0
 	github.com/micro/cli/v2 v2.1.2
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/logger/zerolog/v2 v2.9.1

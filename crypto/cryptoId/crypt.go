@@ -9,8 +9,8 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 
+	"github.com/creationtime/lib-go/util/uid"
 	"github.com/modern-go/reflect2"
-	"lib/util/uid"
 )
 
 // 结构体上的json标签必须带有cv_id属性才会自动转换id

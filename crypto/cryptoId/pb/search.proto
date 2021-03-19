@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 import "github.com/micro/go-micro/v2/api/proto/api.proto";
-import "lib/openapiv2/fieldOption.proto";
+import "github.com/creationtime/lib-go/openapiv2/fieldOption.proto";
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 
 service Search{

@@ -7,10 +7,10 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/des"
-	"lib/crypto/crypt/ecb"
-	"lib/crypto/encoding"
-	"lib/crypto/pad"
-	"lib/util/strings"
+	"github.com/creationtime/lib-go/crypto/crypt/ecb"
+	"github.com/creationtime/lib-go/crypto/encoding"
+	"github.com/creationtime/lib-go/crypto/pad"
+	"github.com/creationtime/lib-go/util/strings"
 )
 
 type Mode uint8
