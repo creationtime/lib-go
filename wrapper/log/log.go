@@ -3,10 +3,10 @@ package log
 import (
 	"context"
 	"encoding/json"
+	"github.com/creationtime/lib-go/util/strings"
 	"github.com/micro/go-micro/v2/client"
 	"github.com/micro/go-micro/v2/logger"
 	"github.com/micro/go-micro/v2/server"
-	"lib/util/strings"
 )
 
 type logWrapper struct {

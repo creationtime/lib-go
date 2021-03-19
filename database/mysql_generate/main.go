@@ -5,7 +5,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	mysql "lib/database/mysql_generate/model"
+	mysql "github.com/creationtime/lib-go/database/mysql_generate/model"
 	"os"
 	"strings"
 )

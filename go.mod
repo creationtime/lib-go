@@ -1,4 +1,4 @@
-module lib
+module github.com/creationtime/lib-go
 
 go 1.14
 

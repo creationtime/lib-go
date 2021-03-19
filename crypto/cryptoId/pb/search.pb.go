@@ -5,11 +5,11 @@ package search
 
 import (
 	fmt "fmt"
+	_ "github.com/creationtime/lib-go/openapiv2"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
 	_ "github.com/micro/go-micro/v2/api/proto"
 	io "io"
-	_ "lib/openapiv2"
 	math "math"
 	math_bits "math/bits"
 )
