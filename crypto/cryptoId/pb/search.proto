@@ -1,0 +1,117 @@
+syntax = "proto3";
+
+import "github.com/micro/go-micro/v2/api/proto/api.proto";
+import "lib/openapiv2/fieldOption.proto";
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+service Search{
+    option (doc.category) = "搜索";
+    option (doc.apiPrefix) = "api";
+    // 搜索匹配
+    rpc Match(go.api.Request) returns (go.api.Response){
+        option (doc.hkv) = {
+           // 设置此接口header中的必字段
+           headerMap:[{key:"Authorization",value:"6IxslVll712XDddSeaC5heqWQvdnZ3vaNdWkGfcWBq8cNBrWd6oLUQXH4y7aFbT6hcCcs"}]
+    };
+    }
+}
+
+
+// 搜索请求
+message MatchReq {
+    // 0:综合 1:标签 2:用户 3:发布
+    int64 type = 1;
+    // 搜索关键词
+    string keyword = 3;
+    // 页数
+    int32 page = 4;
+}
+
+
+// 搜索应答　
+message MatchRsp {
+    // 标签
+    repeated Label labels = 1;
+    // 用户
+    repeated User users = 2;
+    // 发布
+    repeated Post posts = 3;
+    // 每页大小
+    int32 pageSize = 4;
+    // 总条数（非总页数）
+    int32 total = 5;
+}
+
+// 标签
+message Label{
+    // id
+    int64 id = 1;
+    // 名称
+    string name = 2;
+    // 类型id
+    int64 labelTypeId = 3;
+    // 热度
+    int64 hot = 4;
+    // 动态数
+    int64 postNum = 5;
+    // 图集s
+    repeated int64 postIds = 6 [(gogoproto.jsontag) = "postIds,cv_id"];
+}
+// 用户
+message User {
+    // 用户id
+    int64 id = 1 [(gogoproto.jsontag) = "id,cv_id,omitempty"];
+    // 用户昵称
+    string nickname = 2;
+    // 关注状态 0:未关注 1:已关注 2:相互关注
+    int64 followStatus = 3;
+}
+// 发布
+message Post {
+    // 用户id
+    int64 userId = 1 [(doc.field)={docRequired:true}];
+    // 用户名
+    string userName = 2 [(doc.field)={docRequired:true}];
+    // 关注状态 0:未关注 1:已关注 2:相互关注
+    int64 isFollow = 3;
+    // 用户头像
+    string headUrl = 4 [(doc.field)={docRequired:true}];
+    // 图集id
+    int64 id = 5 [(doc.field)={docRequired:true}];
+    // 描述
+    string desc = 6;
+    // 标签列表
+    repeated Label labelList = 7;
+    // 图片数量
+    int64  picNum = 8 [(doc.field)={docRequired:true}];
+    // 类型
+    int32  createType = 9;
+    // 视频地址
+    string videoUrl = 10;
+    // 视频时长
+    int32 videoTime = 11;
+    // 创建时间
+    string createTime = 12 [(doc.field)={docRequired:true}];
+    // 点赞数
+    int64 praises = 13;
+    // 浏览数
+    int64 views = 14; //
+    // 收藏数
+    int64 favorites = 15;
+    // 分享数
+    int64 shares = 16;
+    // 是否点赞
+    int32 isPraise = 17;
+    // 是否收藏　
+    int32 isFavorite = 18;
+    // 图集列表
+    repeated string images = 19;
+    // 封面
+    string cover = 20;
+    // 是否置顶 1：置顶 2：非置顶
+    int32 isTop = 21;
+    // 审核状态 1审核通过 2审核拒绝 3 未审核
+    int32 status = 22;
+    // 发布类型 1 视频 2 图集 3 广告
+    int32 videoFlag = 23 [(doc.field)={docRequired:true}];
+}
