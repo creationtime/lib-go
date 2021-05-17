@@ -1,6 +1,7 @@
 package fileHandler
 
 import (
+	"os"
 	"os/exec"
 
 	"github.com/xfrr/goffmpeg/transcoder"
@@ -8,7 +9,7 @@ import (
 
 //需先安装linux的ffmpeg命令
 //mac下安装 brew install ffmpeg
-func VoiceHandle(inFile, outFile string) error {
+func FfmpegChange(inFile, outFile string) error {
 	//wav_file := "/root/input.wav"  // 需要转换的wav文件
 	//mp3_file := "/root/output.mp3" // 转换后mp3文件存放路径
 	//cmd := exec.Command("ffmpeg", inFile, outFile)
@@ -23,7 +24,7 @@ func VoiceHandle(inFile, outFile string) error {
 	return nil
 }
 
-func VoiceChange(inFile, outFile string) error {
+func Change(inFile, outFile string, delIn bool) error {
 	trans := new(transcoder.Transcoder)
 
 	err := trans.Initialize(inFile, outFile)
@@ -35,7 +36,11 @@ func VoiceChange(inFile, outFile string) error {
 	if err != nil {
 		return err
 	}
-	// wav转mp3成功后，如有必要则可删除wav原文件
-	//_ = os.Remove(inFile)
+	// change成功后，如有必要则可删除in文件
+	if delIn {
+		if err = os.Remove(inFile); err != nil {
+			return err
+		}
+	}
 	return nil
 }

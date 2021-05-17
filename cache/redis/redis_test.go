@@ -1,9 +1,11 @@
 package redis
 
 import (
-	"github.com/stretchr/testify/assert"
+	"context"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestNewClient(t *testing.T) {
@@ -18,14 +20,14 @@ func BenchmarkNewClient(b *testing.B) {
 	cli, err := NewClient(addr, 0, "")
 	assert.NoError(b, err)
 	assert.NotNil(b, cli)
-
-	err = cli.Set("a", 1, time.Minute).Err()
+	ctx := context.TODO()
+	err = cli.Set(ctx, "a", 1, time.Minute).Err()
 	assert.NoError(b, err)
 
 	b.ResetTimer()
 
 	for i := 0; i < b.N; i++ {
-		if v, err := cli.Get("a").Result(); err != nil {
+		if v, err := cli.Get(ctx, "a").Result(); err != nil {
 			assert.NoError(b, err)
 			assert.EqualValues(b, 1, v)
 		}

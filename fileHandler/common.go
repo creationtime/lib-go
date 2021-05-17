@@ -2,16 +2,20 @@ package fileHandler
 
 import (
 	"encoding/binary"
+	"fmt"
 	"io/ioutil"
 	"os"
-
-	. "github.com/creationtime/lib-go/fileHandler/check"
+	"path/filepath"
+	"runtime"
+	"strings"
+	"time"
 )
 
 type GetFileContentsRsp struct {
 	Content []byte
 	Size    int64
 	Type    string
+	Ext     string
 }
 
 //获取根目录下直属所有文件（不包括文件夹及其中的文件）
@@ -50,14 +54,26 @@ func GetAllFiles(folder string) []string {
 	return res
 }
 
-//检查文件存在性
-func CheckFileIsExistAndCreate(folderPath string) (string, error) {
-	if _, err := os.Stat(folderPath); os.IsNotExist(err) {
+//检查文件存在性并创建
+func CheckFileIsExistAndCreate(folderPath string) (*os.FileInfo, error) {
+	fileInfo, err := CheckFileIsExist(folderPath)
+	if err != nil {
 		if err := os.MkdirAll(folderPath, os.ModePerm); err != nil {
-			return "", err
+			return nil, err
 		}
 	}
-	return folderPath, nil
+	return fileInfo, nil
+}
+
+//检查文件存在性
+func CheckFileIsExist(folderPath string) (*os.FileInfo, error) {
+	fileInfo, err := os.Stat(folderPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return nil, fmt.Errorf("File does not exist.")
+		}
+	}
+	return &fileInfo, nil
 }
 
 func CreateFile(newPath string, stream []byte) error {
@@ -87,7 +103,8 @@ func GetFileContents(path string) (*GetFileContentsRsp, error) {
 		return nil, err
 	}
 	size := int64(binary.Size(content))
-	_type, err := GetFileType(content)
+	ext := GetFileExt(path)
+	_type, err := GetFileType(path, content)
 	if err != nil {
 		return nil, err
 	}
@@ -95,5 +112,48 @@ func GetFileContents(path string) (*GetFileContentsRsp, error) {
 		Content: content,
 		Size:    size,
 		Type:    _type,
+		Ext:     ext,
 	}, nil
+}
+
+func QuickWriteFile(filePath string, content []byte) error {
+	err := ioutil.WriteFile(filePath, content, 0666)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+//skip 循环后退。0 表示调用runtime.Caller()所在的位置，1表示runtime.Caller()所在函数的调用位置，依此类推
+func CurrentFile(skip int) (string, error) {
+	_, file, _, ok := runtime.Caller(skip)
+	if !ok {
+		return "", nil
+	}
+	return file, nil
+}
+
+//获取当前执行文件路径
+func CurrentExecFileDir() (string, error) {
+	dir, err := os.Getwd()
+	if err != nil {
+		return "", nil
+	}
+	return dir, nil
+}
+
+//获取当前文件路径
+func CurrentFileDir(path string) string {
+	dir := filepath.Dir(path)
+	return dir
+}
+
+//打印内容到文件中
+func Tracefile(filePath, strContent string) {
+	fd, _ := os.OpenFile(filePath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	fd_time := time.Now().Format("2006-01-02 15:04:05")
+	fd_content := strings.Join([]string{"===", fd_time, "===", strContent, "\n"}, "")
+	buf := []byte(fd_content)
+	fd.Write(buf)
+	fd.Close()
 }

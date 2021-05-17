@@ -2,8 +2,9 @@ package redis
 
 import (
 	"context"
-	"github.com/go-redis/redis/v8"
 	"time"
+
+	"github.com/go-redis/redis/v8"
 )
 
 func NewClient(addr string, db int, password string) (*redis.Client, error) {
