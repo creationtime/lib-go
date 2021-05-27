@@ -18,7 +18,6 @@ require (
 	github.com/lib/pq v1.10.2
 	github.com/micro/cli/v2 v2.1.2
 	github.com/micro/go-micro/v2 v2.9.1
-	github.com/micro/go-plugins/logger/zerolog/v2 v2.9.1
 	github.com/micro/micro/v2 v2.9.3
 	github.com/modern-go/reflect2 v1.0.1
 	github.com/mwitkow/go-proto-validators v0.3.2
