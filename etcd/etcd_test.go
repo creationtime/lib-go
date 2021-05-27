@@ -4,8 +4,8 @@ import (
 	"testing"
 )
 
-func TestConf(t *testing.T) {
-	err := NewKV([]string{"10.4.61.147:31979"})
+func Test(t *testing.T) {
+	s, err := NewKV([]string{"10.4.61.145:31169"})
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -26,19 +26,19 @@ func TestConf(t *testing.T) {
 	}
 
 	t.Run("setPathObj", func(t *testing.T) {
-		if err := SetKV("/micro/config/test", no); err != nil {
+		if err = s.SetKV("/micro/config/test", no); err != nil {
 			t.Fatal(err)
 		}
 	})
 
 	t.Run("setKey", func(t *testing.T) {
-		if err := SetKV("/micro/config/test", 100, "followLimit"); err != nil {
+		if err = s.SetKV("/micro/config/test", 100, "followLimit"); err != nil {
 			t.Fatal(err)
 		}
 	})
 
 	t.Run("getPathObj", func(t *testing.T) {
-		v, err := GetKV("/micro/config/test")
+		v, err := s.GetKV("/micro/config/test")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -47,7 +47,7 @@ func TestConf(t *testing.T) {
 	})
 
 	t.Run("getKey", func(t *testing.T) {
-		v, err := GetKV("/micro/config/test", "followLimit1")
+		v, err := s.GetKV("/micro/config/test", "followLimit1")
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -56,15 +56,13 @@ func TestConf(t *testing.T) {
 	})
 
 	t.Run("delPath", func(t *testing.T) {
-		err := DelKV("/micro/config/test1")
-		if err != nil {
+		if err = s.DelKV("/micro/config/test1"); err != nil {
 			t.Fatal(err)
 		}
 	})
 
 	t.Run("delKey", func(t *testing.T) {
-		err := DelKV("/micro/config/test1", "followLimit")
-		if err != nil {
+		if err = s.DelKV("/micro/config/test1", "followLimit"); err != nil {
 			t.Fatal(err)
 		}
 	})
