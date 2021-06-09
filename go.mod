@@ -8,7 +8,7 @@ require (
 	github.com/doug-martin/goqu/v9 v9.13.0
 	github.com/garyburd/redigo v1.6.2
 	github.com/gin-gonic/gin v1.7.2
-	github.com/go-redis/redis/v8 v8.9.0
+	github.com/go-redis/redis/v8 v8.10.0
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/gogo/protobuf v1.3.2
 	github.com/golang/protobuf v1.5.2
