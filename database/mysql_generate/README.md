@@ -6,7 +6,7 @@ mysql_generate包是根据数据库生成基础model和数据库脚本的工具
 ## 如何使用
 ### 安装生成可执行文件
 
-* `cd ~/lib-go/database/mysql_generate`
+* `cd ~/lib/database/mysql_generate`
 * `go install`
 
 
