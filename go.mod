@@ -22,15 +22,15 @@ require (
 	github.com/modern-go/reflect2 v1.0.1
 	github.com/mwitkow/go-proto-validators v0.3.2
 	github.com/opentracing/opentracing-go v1.2.0
-	github.com/panjf2000/ants/v2 v2.4.5
+	github.com/panjf2000/ants/v2 v2.4.6
 	github.com/pquerna/ffjson v0.0.0-20190930134022-aa0246cd15f7
-	github.com/rs/zerolog v1.22.0
+	github.com/rs/zerolog v1.23.0
 	github.com/stretchr/testify v1.7.0
 	github.com/uber/jaeger-client-go v2.29.1+incompatible
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
-	github.com/valyala/fasthttp v1.26.0
+	github.com/valyala/fasthttp v1.27.0
 	github.com/xfrr/goffmpeg v0.0.0-20200825100927-5550d238df5c
-	golang.org/x/crypto v0.0.0-20210513164829-c07d793c2f9a
+	golang.org/x/crypto v0.0.0-20210616213533-5ff15b29337e
 	google.golang.org/protobuf v1.26.0
 	gotest.tools v2.2.0+incompatible
 )
