@@ -5,9 +5,9 @@ package search
 
 import (
 	fmt "fmt"
-	_ "github.com/creationtime/lib-go/openapiv2"
 	_ "github.com/gogo/protobuf/gogoproto"
 	proto "github.com/gogo/protobuf/proto"
+	_ "github.com/lights-T/lib-go/openapiv2"
 	_ "github.com/micro/go-micro/v2/api/proto"
 	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 	math "math"

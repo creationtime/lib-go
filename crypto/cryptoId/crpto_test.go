@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	pb "github.com/creationtime/lib-go/crypto/cryptoId/pb"
+	pb "github.com/lights-T/lib-go/crypto/cryptoId/pb"
 	"github.com/stretchr/testify/assert"
 )
 

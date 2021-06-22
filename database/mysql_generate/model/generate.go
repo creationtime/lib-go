@@ -401,7 +401,7 @@ func (g *Generate) generateImports() {
 		"github.com/doug-martin/goqu/v9",
 		"github.com/doug-martin/goqu/v9/exp",
 		fmt.Sprint(""),
-		"github.com/creationtime/lib-go/database/model",
+		"github.com/lights-T/lib-go/database/model",
 		fmt.Sprintf("db %s", Package),
 	}
 	g.imports = append(g.imports, imports...)

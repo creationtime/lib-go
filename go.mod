@@ -1,4 +1,4 @@
-module github.com/creationtime/lib-go
+module github.com/lights-T/lib-go
 
 go 1.16
 
