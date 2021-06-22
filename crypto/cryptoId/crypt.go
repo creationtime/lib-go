@@ -9,7 +9,7 @@ import (
 
 	jsoniter "github.com/json-iterator/go"
 
-	"github.com/creationtime/lib-go/util/uid"
+	"github.com/lights-T/lib-go/util/uid"
 	"github.com/modern-go/reflect2"
 )
 

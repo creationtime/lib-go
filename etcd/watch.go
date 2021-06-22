@@ -1,7 +1,7 @@
 package etcd
 
 import (
-	"github.com/creationtime/lib-go/logger"
+	"github.com/lights-T/lib-go/logger"
 
 	"github.com/micro/go-micro/v2/config"
 	"github.com/micro/go-micro/v2/config/reader"

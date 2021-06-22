@@ -9,7 +9,7 @@ import (
 	"encoding/base64"
 	"fmt"
 
-	"github.com/creationtime/lib-go/util/strings"
+	"github.com/lights-T/lib-go/util/strings"
 )
 
 type Rsa struct {
