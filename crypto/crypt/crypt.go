@@ -22,6 +22,13 @@ const (
 	ModeOFB
 )
 
+const (
+	PaddingPkcs5 = "pkcs5"
+	PaddingPkcs7 = "pkcs7"
+	CipherAes    = "aes"
+	CodingBase64 = "base64"
+)
+
 type Crypt interface {
 	Encode(string) (string, error)
 	Decode(string) (string, error)
