@@ -149,7 +149,7 @@ type UpHandler struct {
 	Conf *ConfigType
 }
 
-type imageRspInfo struct {
+type ImageRspInfo struct {
 	Hash     string
 	FileName string
 	Origin   string
@@ -157,7 +157,7 @@ type imageRspInfo struct {
 }
 
 // UploaderImage Upload image handler
-func (h *UpHandler) UploaderImage(b []byte) (rsp *imageRspInfo, err error) {
+func (h *UpHandler) UploaderImage(b []byte) (rsp *ImageRspInfo, err error) {
 	var (
 		maxUploadSize = h.Conf.Upload.Image.MaxSize // 最大上传大小
 		distPath      string                        // 最终的输出目录
@@ -165,7 +165,7 @@ func (h *UpHandler) UploaderImage(b []byte) (rsp *imageRspInfo, err error) {
 		dist          *os.File
 	)
 
-	rsp = &imageRspInfo{}
+	rsp = &ImageRspInfo{}
 
 	// Source
 	file := &multipart.FileHeader{}
@@ -180,6 +180,12 @@ func (h *UpHandler) UploaderImage(b []byte) (rsp *imageRspInfo, err error) {
 	if file.Size > int64(maxUploadSize) {
 		return rsp, errors.New("Upload file too large, The max upload limit is " + strconv.Itoa(int(maxUploadSize)))
 	}
+	logger.Info(file.Filename)
+	logger.Info(file.Size)
+	logger.Info(file.Header)
+	logger.Info(h.Conf.Upload.Path)
+	logger.Info(h.Conf.Upload.Image)
+	logger.Info(h.Conf.Upload.File)
 
 	if src, err = file.Open(); err != nil {
 	}
