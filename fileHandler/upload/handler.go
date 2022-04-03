@@ -165,6 +165,8 @@ func (h *UpHandler) UploaderImage(b []byte) (rsp *imageRspInfo, err error) {
 		dist          *os.File
 	)
 
+	rsp = &imageRspInfo{}
+
 	// Source
 	file := &multipart.FileHeader{}
 	err = json.Unmarshal(b, file)

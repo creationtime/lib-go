@@ -2,6 +2,7 @@ package config
 
 import (
 	"github.com/gin-gonic/gin"
+
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"os"
