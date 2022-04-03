@@ -43,7 +43,7 @@ const (
 	ErrMsgCrypt             = "数据加解密异常"
 	ErrMsgSignature         = "签名不匹配"
 
-	ErrMsgUnauthorized      = "授权失败，请登录"
+	ErrMsgUnauthorized = "授权失败，请登录"
 )
 
 var (
@@ -55,3 +55,20 @@ var (
 	ErrDatabase          = New(DatabaseCode, ErrMsgServerUnavailable)
 	ErrInvalidParams     = New(InvalidParamCode, ErrMsgInvalidParam)
 )
+
+const (
+	ServerErr = iota + 1
+	JSONErr
+	ParamsErr
+)
+
+type Err struct {
+	Code    int32
+	Message string
+}
+
+var Errs = map[int]*Err{
+	ServerUnavailableCode: {501, ErrMsgServerUnavailable},
+	JSONErr:               {406, "Json 格式错误"},
+	ParamsErr:             {406, "参数错误"},
+}

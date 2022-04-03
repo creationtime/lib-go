@@ -17,6 +17,9 @@ func (e *Error) Error() string {
 
 // New generates a custom error.
 func New(code int32, message string) error {
+	if code == 0 {
+		return &errorString{message}
+	}
 	return &Error{
 		Code:   code,
 		Detail: message,
@@ -82,4 +85,13 @@ func ServerUnavailable(message string) error {
 		Code:   ErrServiceInvalid,
 		Detail: message,
 	}
+}
+
+// errorString is a trivial implementation of error.
+type errorString struct {
+	s string
+}
+
+func (e *errorString) Error() string {
+	return e.s
 }

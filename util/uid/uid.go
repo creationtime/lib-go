@@ -20,6 +20,9 @@ func (u *UID) UnmarshalJSON(b []byte) error {
 	return nil
 }
 func (u UID) Encode() int64 {
+	if u == 0 {
+		return int64(u)
+	}
 	var start int64 = 100000
 	seq := []string{"0", "4", "2", "9", "1", "6", "7", "5", "8", "3"}
 	i := int64(u) + start
@@ -39,6 +42,9 @@ func (u UID) Encode() int64 {
 }
 
 func (u UID) Decode() UID {
+	if u == 0 {
+		return u
+	}
 	var start int64 = 100000
 	seq := []string{"0", "4", "2", "9", "1", "6", "7", "5", "8", "3"}
 	str := strconv.Itoa(int(u))
