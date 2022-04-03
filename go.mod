@@ -23,6 +23,7 @@ require (
 	github.com/micro/micro/v2 v2.9.3
 	github.com/modern-go/reflect2 v1.0.2
 	github.com/mwitkow/go-proto-validators v0.3.2
+	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
 	github.com/olivere/elastic v6.2.37+incompatible
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/panjf2000/ants/v2 v2.4.8
@@ -35,5 +36,6 @@ require (
 	github.com/xfrr/goffmpeg v0.0.0-20210624103149-5ca2d3062daf
 	golang.org/x/crypto v0.0.0-20220331220935-ae2d96664a29
 	google.golang.org/protobuf v1.28.0
+	gopkg.in/yaml.v2 v2.4.0
 	gotest.tools v2.2.0+incompatible
 )
